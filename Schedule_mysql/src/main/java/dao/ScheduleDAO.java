@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
-import dto.ScheduleDTO;
 import dto.ColorDTO;
+import dto.ScheduleDTO;
 
 public class ScheduleDAO implements DAOinterface{
 	//コネクションインスタンス生成
@@ -62,10 +62,11 @@ public class ScheduleDAO implements DAOinterface{
 				(Skd_id,Title,StartDay,EndDay,StartTime,EndTime,Person,Place,Memo,Color_cd) 
 				VALUES ('"+skdId+"','テストタイトル','2021/09/30','2021/09/30','19:00','20:00',
 				'テスト人','テスト場所','テストmemo','C004');
-				*/				
+				*/
+				System.out.println(sql);
 				//SQL文実行
 				Statement stmt = con.createStatement();
-				stmt.executeQuery(sql);
+				stmt.executeUpdate(sql);
 				System.out.println("新規追加OK");				
 			}catch(SQLException e) {
 	            e.printStackTrace();
@@ -92,8 +93,7 @@ public class ScheduleDAO implements DAOinterface{
 								+ "a.person, a.place, a.memo, a.color_cd, b.HTML  " 
 								+ "FROM Schedule a JOIN color b ON a.color_cd = b.color_cd " 
 								+ "where a.startday " 
-								+ "BETWEEN TO_DATE('"+firstDay+"', 'YY-MM-DD HH24:MI:SS')" 
-								+ "AND TO_DATE('"+lastDay+"', 'YY-MM-DD HH24:MI:SS')";
+								+ "BETWEEN '"+firstDay+" 00:00:00' AND '"+lastDay+" 00:00:00' ";
 				//SQL文実行
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
@@ -185,7 +185,7 @@ public class ScheduleDAO implements DAOinterface{
 				System.out.println(sql);
 				//SQL文実行
 				Statement stmt = con.createStatement();
-				stmt.executeQuery(sql);
+				stmt.executeUpdate(sql);
 				System.out.println("予定更新OK");				
 			}catch(SQLException e) {
 	            e.printStackTrace();
@@ -206,7 +206,7 @@ public class ScheduleDAO implements DAOinterface{
 				 * */								
 				//SQL文実行
 				Statement stmt = con.createStatement();
-				stmt.executeQuery(sql);
+				stmt.executeUpdate(sql);
 				System.out.println("予定削除OK");				
 			}catch(SQLException e) {
 	            e.printStackTrace();

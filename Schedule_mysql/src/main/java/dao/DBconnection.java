@@ -10,10 +10,10 @@ import java.sql.SQLException;
 public class DBconnection {	
 	//DB接続用フィールド
 	//mysqlを設定する、libにドライバー入れる
-	private static String driver = "oracle.jdbc.driver.OracleDriver";
-	private static String url = "jdbc:oracle:thin:@test-oracle.ctcb5xn3a4zt.ap-northeast-1.rds.amazonaws.com:1521/ORCL";
-	private static String user = "testuser";
-	private static String pass = "nattou24";
+	private static String driver = "com.mysql.cj.jdbc.Driver"; //ドライバーのバージョン8.xなら　com.mysql.cj.jdbc.driver
+	private static String url = "jdbc:mySQL://localhost/Schedule"; //adminのホストは%になっているので、このままでは無理かもしれません。
+	private static String user = "admin";
+	private static String pass = "hyst0512";
 	//DBコネクション
 	private static Connection con = null;
 	

@@ -34,9 +34,8 @@ public class HolidayDAO implements DAOinterface {
 			try {
 				String sql = "SELECT a.holiday_cd, a.holidayDate, a.hols_cd, b.holidayName  " 
 		  						+ "FROM HolidayCalendar a JOIN Holiday b ON a.hols_cd = b.hols_cd " 
-		  						+ "where a.HolidayDate " 
-		  						+ "BETWEEN TO_DATE('"+firstDay+"', 'YY-MM-DD HH24:MI:SS')" 
-		  						+ "AND TO_DATE('"+lastDay+"', 'YY-MM-DD HH24:MI:SS')";
+		  						+ "WHERE a.HolidayDate BETWEEN '"+firstDay+" 00:00:00' AND '"+lastDay+" 00:00:00' " ;
+				
 				
 					//SQL文実行
 					Statement stmt = con.createStatement();
