@@ -91,7 +91,7 @@ public class ScheduleDAO implements DAOinterface{
 			try {
 				String sql = "SELECT a.skd_id, a.title, a.startday, a.endday, a.starttime, a.endtime, "
 								+ "a.person, a.place, a.memo, a.color_cd, b.HTML  " 
-								+ "FROM Schedule a JOIN color b ON a.color_cd = b.color_cd " 
+								+ "FROM Schedule a JOIN Color b ON a.color_cd = b.color_cd " 
 								+ "where a.startday " 
 								+ "BETWEEN '"+firstDay+" 00:00:00' AND '"+lastDay+" 00:00:00' ";
 				//SQL文実行
@@ -129,7 +129,7 @@ public class ScheduleDAO implements DAOinterface{
 				try {
 					String sql = "SELECT a.skd_id, a.title, a.startday, a.endday, a.starttime, a.endtime, " 
 									+ "a.person, a.place, a.memo, a.color_cd, b.HTML  "
-									+ "FROM Schedule a JOIN color b ON a.color_cd = b.color_cd "
+									+ "FROM Schedule a JOIN Color b ON a.color_cd = b.color_cd "
 									+ "WHERE SKD_ID = "+skdId+" ";
 
 					//SQL文実行
