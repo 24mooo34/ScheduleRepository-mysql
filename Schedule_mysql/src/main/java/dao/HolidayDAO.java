@@ -126,5 +126,7 @@ SQL文原本
 	where a.HolidayDate
 	BETWEEN TO_DATE('2021/09/01 00:00:00', 'YY-MM-DD HH24:MI:SS')
 	AND TO_DATE('2021/09/30 23:59:59', 'YY-MM-DD HH24:MI:SS');
+
+SELECT a.holiday_cd, a.holidayDate, a.hols_cd, b.holidayName FROM HolidayCalendar a JOIN Holiday b ON a.hols_cd = b.hols_cd WHERE a.HolidayDate BETWEEN '2021-09-01 00:00:00' AND '2021-09-30 00:00:00';
 	
 --------------------------------------------------------------------------------------------------------*/
