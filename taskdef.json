@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/dev-task-test",
+          "awslogs-group": "/ecs/dev-task-cicd",
           "awslogs-region": "ap-northeast-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -54,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "dev-container-test"
+      "name": "dev-container-cicd"
     }
   ],
   "placementConstraints": [],
@@ -64,8 +64,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:079542450109:task-definition/dev-task-test:2",
-  "family": "dev-task-test",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:079542450109:task-definition/dev-task-cicd:1",
+  "family": "dev-task-cicd",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -120,7 +120,7 @@
     "cpuArchitecture": null
   },
   "cpu": "512",
-  "revision": 2,
+  "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,

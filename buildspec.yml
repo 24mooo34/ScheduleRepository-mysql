@@ -4,8 +4,8 @@ phases:
     commands:			
      ## ECRにログイン			
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)			
-     ## push先のECRリポジトリのURIを環境変数として宣言？（アカウントidは12桁のエイリアス）			
-      - REPOSITORY_URI=079542450109.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr			
+     ## push先のECRリポジトリのURIを(環境?)変数として宣言			
+      - REPOSITORY_URI=079542450109.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr-cicd			
      ## Dockerイメージのタグとして使用するため、Gitのコミットハッシュを取得			
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)			
 			

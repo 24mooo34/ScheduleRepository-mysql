@@ -14,8 +14,8 @@ ADD ./apache-tomcat-9.0.58.tar.gz /opt/
 #JDBCのインストール
 ADD ./mysql-connector-java.jar /opt/apache-tomcat-9.0.58/bin/
 
-#warファイルのインストール
-ADD ./Schedule_mysql.war /opt/apache-tomcat-9.0.58/webapps/
+#ソースコードのフォルダをtomcat配下にコピー？
+COPY ./Schedule_mysql /opt/apache-tomcat-9.0.58/webapps/
 
 #tomcat起動
 CMD ["/opt/apache-tomcat-9.0.58/bin/catalina.sh", "run"]
