@@ -5,17 +5,17 @@ phases:
      ## ECRにログイン
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
      ## push先のECRリポジトリのURIを(環境?)変数として宣言
-      - REPOSITORY_URI=079542450109.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr-cicd		
+      - REPOSITORY_URI=079542450109.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr-cicd
      ## Dockerイメージのタグとして使用するため、Gitのコミットハッシュを取得
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-	
+
   build:
     commands:
      ## Dockerイメージのビルド
       - docker build -t $REPOSITORY_URI:latest .
      ## タグのつけ方的な
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-	
+
   post_build:
     commands:
      ## DockerイメージのECRへのプッシュ
@@ -25,8 +25,8 @@ phases:
      ## ローリングの場合：imagedefinitions.json、 Blue/Greenの場合：imagedetail.json
       - echo "[{\"name\":\"${IMAGE_NAME}\",\"imageUri\":\"${REPOSITORY_URI}:${IMAGE_TAG}\"}]" > imagedefinitions.json
       - printf '{"Version":"1.0","ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
-	
+
 artifacts:
      ## buildの最後で作成したファイルをアーティファクトとして流す
     files: imagedefinitions.json
-    files: imageDetail.json			
+    files: imageDetail.json
