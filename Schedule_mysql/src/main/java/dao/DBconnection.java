@@ -11,6 +11,7 @@ public class DBconnection {
 	//DB接続用フィールド
 	//mysqlを設定する、libにドライバー入れる
 	private static String driver = "com.mysql.cj.jdbc.Driver"; //ドライバーのバージョン8.xなら　com.mysql.cj.jdbc.driver
+		//private static String url = "jdbc:mySQL://localhost/Schedule";//ローカルとの接続
 	private static String url = "jdbc:mySQL://database-01-instance-1.ctcb5xn3a4zt.ap-northeast-1.rds.amazonaws.com/Schedule"; //adminのホストは%になっているので、このままでは無理かもしれません。
 	private static String user = "admin";
 	private static String pass = "hyst0512";

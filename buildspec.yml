@@ -23,10 +23,11 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
      ## ECS+CodeDeployにどのイメージを使用するか指示するためのファイルを作成
      ## ローリングの場合：imagedefinitions.json、 Blue/Greenの場合：imagedetail.json
-      - echo "[{\"name\":\"${IMAGE_NAME}\",\"imageUri\":\"${REPOSITORY_URI}:${IMAGE_TAG}\"}]" > imagedefinitions.json
       - printf '{"Version":"1.0","ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
 
 artifacts:
      ## buildの最後で作成したファイルをアーティファクトとして流す
-    files: imagedefinitions.json
-    files: imageDetail.json
+    files:
+      - imageDetail.json
+      - appspec.yml
+      - taskdef.json

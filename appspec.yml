@@ -4,7 +4,6 @@ Resources:
       Type: AWS::ECS::Service
       Properties:
         TaskDefinition: "<TASK_DEFINITION>" ## <TASK_DEFINITION>という文字列を置き換えずそのまま使用する（環境変数）
-			
         LoadBalancerInfo:
             ContainerName: "dev-container-cicd" ##タスク定義内で定義したコンテナ名
-            ContainerPort: "8080" ##タスク定義内で定義しているコンテナのポートと合わせる
+            ContainerPort: 8080 ##タスク定義内で定義しているコンテナのポートと合わせる
